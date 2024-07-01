@@ -32,3 +32,9 @@ window.onload = function() {
     number.style.color = "red";
   }
 };
+
+const refreshButton = document.getElementById("refreshButton");
+
+refreshButton.addEventListener("click", () => {
+  location.reload();
+});

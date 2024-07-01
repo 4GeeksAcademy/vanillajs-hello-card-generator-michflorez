@@ -12,6 +12,8 @@ body {
   border-radius: 20px;
   border: 5px black;
   position: relative;
+  margin-bottom: 25px;
+  margin-top: 25px;
 
   .top-sign {
     position: absolute;
@@ -25,6 +27,7 @@ body {
     bottom: 20px;
     right: 20px;
     font-size: 80px;
+    transform: rotate(180deg);
   }
 
   .number {
