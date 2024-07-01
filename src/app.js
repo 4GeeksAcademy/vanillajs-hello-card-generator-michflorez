@@ -3,13 +3,14 @@ import "bootstrap";
 import "./style.css";
 import { bottom } from "@popperjs/core";
 
-window.onload = function() {
+function getRandomElement(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function generateCard() {
   const signs = ["&hearts;", "&diams;", "&clubs;", "&spades;"];
   const numbers = ["A", "J", "K", "Q", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-  function getRandomElement(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
-  }
   const randomSing = getRandomElement(signs);
   const RandomNumber = getRandomElement(numbers);
 
@@ -30,11 +31,27 @@ window.onload = function() {
     bottomSign.style.color = "red";
     topSign.style.color = "red";
     number.style.color = "red";
+  } else {
+    bottomSign.style.color = "black";
+    topSign.style.color = "black";
+    number.style.color = "black";
   }
+}
+
+window.onload = function() {
+  generateCard();
+  const refreshButton = document.getElementById("refreshButton");
+
+  refreshButton.addEventListener("click", () => {
+    generateCard();
+  });
+
+  const timerButton = document.getElementById("timerButton");
+
+  function startAutoRefresh() {
+    setInterval(generateCard, 10000);
+  }
+
+  const startRefreshButton = document.getElementById("timerButton");
+  startRefreshButton.addEventListener("click", startAutoRefresh);
 };
-
-const refreshButton = document.getElementById("refreshButton");
-
-refreshButton.addEventListener("click", () => {
-  location.reload();
-});
